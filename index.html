@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="MKT 315-01 Fashion Marketing (Spring 2026) — Dr. Natalie Baucum, PhD" />
+  <title>MKT 315-01 Fashion Marketing | Spring 2026</title>
+  <style>
+    /* =========================
+       POLYMATHIC PROFESSOR THEME
+       Colors: Red / Black / White
+       Font: Century Gothic
+       ========================= */
+    :root{
+      --red:#B3001B;        /* Polymathic Professor Red */
+      --black:#0B0B0F;
+      --white:#FFFFFF;
+      --ink:#12121A;
+      --muted:#6B6B76;
+      --card:#FFFFFF;
+      --border:rgba(11,11,15,.12);
+      --shadow:0 14px 30px rgba(11,11,15,.14);
+      --shadow2:0 8px 20px rgba(11,11,15,.10);
+      --radius:22px;
+      --radius2:16px;
+      --max:980px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:"Century Gothic", CenturyGothic, AppleGothic, "Segoe UI", Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(179,0,27,.11), transparent 55%),
+        radial-gradient(1000px 600px at 85% 12%, rgba(11,11,15,.10), transparent 60%),
+        linear-gradient(180deg, #fff, #fff);
+      line-height:1.45;
+    }
+
+    a{ color:inherit; }
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 18px 70px;
+    }
+
+    /* Top banner */
+    .hero{
+      background:linear-gradient(135deg, var(--black), #161621 55%, var(--red));
+      color:var(--white);
+      border-radius:calc(var(--radius) + 6px);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:320px; height:320px;
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      transform:rotate(12deg);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -80px -120px auto;
+      width:360px; height:360px;
+      background:radial-gradient(circle at 35% 35%, rgba(179,0,27,.35), transparent 60%);
+      transform:rotate(-8deg);
+    }
+
+    .hero-inner{
+      padding:30px 26px 24px;
+      position:relative;
+      z-index:1;
+      display:grid;
+      gap:14px;
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.95;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.08);
+      backdrop-filter: blur(6px);
+      box-shadow:0 6px 18px rgba(0,0,0,.14);
+    }
+    .title{
+      font-size:clamp(28px, 4.2vw, 42px);
+      line-height:1.08;
+      margin:0;
+      letter-spacing:.02em;
+    }
+    .subtitle{
+      margin:0;
+      max-width:62ch;
+      color:rgba(255,255,255,.92);
+      font-size:15.5px;
+    }
+
+    .hero-grid{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:14px;
+    }
+    @media (max-width: 820px){
+      .hero-grid{ grid-template-columns:1fr; }
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:var(--radius2);
+      padding:16px 16px;
+    }
+    .hero-card h3{
+      margin:0 0 8px 0;
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.96;
+    }
+    .hero-card p{
+      margin:0;
+      color:rgba(255,255,255,.92);
+      font-size:14px;
+    }
+
+    /* Section scaffolding */
+    .section{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      padding:18px 20px 12px;
+    }
+    .section-title{
+      margin:0;
+      font-size:16px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+    .section-note{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width:46ch;
+    }
+    .divider{
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(11,11,15,.18), transparent);
+      margin:0 16px;
+    }
+    .content{
+      padding:14px 20px 20px;
+    }
+
+    /* Cultural lens band (visual element) */
+    .cultural-band{
+      margin-top:18px;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      border:1px solid var(--border);
+      background:
+        linear-gradient(90deg, var(--black) 0 28%, var(--red) 28% 100%);
+      position:relative;
+    }
+    .cultural-band::before{
+      content:"";
+      position:absolute; inset:0;
+      opacity:.18;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0 6px, transparent 6px 14px),
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,.35), transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(255,255,255,.25), transparent 55%);
+      mix-blend-mode:overlay;
+    }
+    .cultural-band-inner{
+      position:relative;
+      z-index:1;
+      padding:18px 20px;
+      color:var(--white);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      align-items:center;
+    }
+    @media (max-width: 820px){
+      .cultural-band-inner{ grid-template-columns:1fr; }
+    }
+    .cultural-band h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .cultural-band p{
+      margin:0;
+      font-size:14px;
+      color:rgba(255,255,255,.92);
+    }
+    .tagrow{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:10px;
+    }
+    .tag{
+      display:inline-flex;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.28);
+      background:rgba(255,255,255,.08);
+      font-size:12px;
+      letter-spacing:.02em;
+    }
+
+    /* Info blocks */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 820px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .box{
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:14px 14px;
+      background:linear-gradient(180deg, #fff, #fff);
+    }
+
+    .label{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .icon{
+      width:34px; height:34px;
+      border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(135deg, rgba(179,0,27,.12), rgba(11,11,15,.06));
+      border:1px solid rgba(11,11,15,.10);
+      flex:0 0 auto;
+    }
+    .label h4{
+      margin:0;
+      font-size:13px;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .box p{ margin:0; color:var(--muted); font-size:13.5px; }
+
+    /* Office hours list cards */
+    .hours{
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    @media (max-width: 820px){
+      .hours{ grid-template-columns:1fr; }
+    }
+    .hours .box{ height:100%; }
+    .times{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:6px;
+      font-size:13.5px;
+      color:var(--ink);
+    }
+    .times li{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(11,11,15,.10);
+      background:rgba(179,0,27,.04);
+    }
+    .muted{ color:var(--muted); font-size:13px; margin-top:10px; }
+
+    /* Objectives list */
+    .checklist{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    .check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:16px;
+      border:1px solid rgba(11,11,15,.10);
+      background:rgba(11,11,15,.02);
+    }
+    .check svg{ margin-top:2px; flex:0 0 auto; }
+    .check span{ font-size:14px; }
+
+    /* Course map infographic */
+    .map{
+      display:grid;
+      gap:14px;
+    }
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:10px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .flow{ grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width: 520px){
+      .flow{ grid-template-columns:1fr; }
+    }
+    .step{
+      border-radius:20px;
+      border:1px solid var(--border);
+      padding:14px 14px 12px;
+      background:
+        linear-gradient(180deg, #fff, #fff),
+        radial-gradient(circle at 20% 0%, rgba(179,0,27,.08), transparent 55%);
+      position:relative;
+      overflow:hidden;
+    }
+    .step::after{
+      content:"";
+      position:absolute;
+      inset:auto -40px -40px auto;
+      width:120px; height:120px;
+      border-radius:50%;
+      background:rgba(179,0,27,.10);
+      filter: blur(2px);
+    }
+    .step h3{
+      margin:0 0 6px;
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .step p{ margin:0; font-size:13px; color:var(--muted); }
+    .step .mini{
+      margin-top:10px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .mini .chip{
+      font-size:12px;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(11,11,15,.10);
+      background:rgba(179,0,27,.05);
+    }
+
+    /* Buttons */
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(11,11,15,.18);
+      text-decoration:none;
+      background:var(--black);
+      color:var(--white);
+      box-shadow:0 10px 18px rgba(11,11,15,.14);
+      font-weight:600;
+      letter-spacing:.02em;
+    }
+    .btn.secondary{
+      background:var(--white);
+      color:var(--black);
+    }
+    .btn.red{
+      background:var(--red);
+      border-color:rgba(255,255,255,.18);
+    }
+    .btn:focus{ outline:3px solid rgba(179,0,27,.25); outline-offset:2px; }
+
+    /* Footer */
+    .footer{
+      margin-top:18px;
+      padding:18px 20px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background:linear-gradient(135deg, rgba(179,0,27,.06), rgba(11,11,15,.02));
+    }
+    .footer p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer strong{ color:var(--ink); }
+
+    /* Accessibility helpers */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Course header">
+      <div class="hero-inner">
+        <div class="kicker">
+          <span class="pill">
+            <!-- small icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 7h10M7 11h10M7 15h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M5 4h14a2 2 0 0 1 2 2v13a1 1 0 0 1-1.447.894L12 16.118l-7.553 3.776A1 1 0 0 1 3 19V6a2 2 0 0 1 2-2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <span>Hampton University • School of Business</span>
+          </span>
+          <span class="pill">MKT 315-01</span>
+          <span class="pill">Spring 2026</span>
+        </div>
+
+        <h1 class="title">Fashion Marketing</h1>
+        <p class="subtitle">
+          A discussion-based, strategy-focused course that uses a Black cultural lens to analyze how fashion brands
+          create meaning, influence identity, shape trends, and build power in the marketplace.
+        </p>
+
+        <div class="hero-grid">
+          <div class="hero-card">
+            <h3>Instructor</h3>
+            <p><strong>Natalie Baucum, PhD</strong><br/>Email: natalie.baucum@hamptonu.edu<br/>Office: Buckman Hall, Office 214A</p>
+          </div>
+          <div class="hero-card">
+            <h3>Course Approach</h3>
+            <p><strong>Text → Culture → Discussion → Application</strong><br/>Expect weekly reflection, real brand examples, and hands-on strategy work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULTURAL LENS BAND -->
+    <section class="cultural-band" aria-label="Cultural lens statement">
+      <div class="cultural-band-inner">
+        <div>
+          <h2>Cultural Framing</h2>
+          <p>
+            Fashion marketing is not neutral. We will study traditional frameworks and also examine how culture,
+            identity, access, representation, and ownership shape what becomes “fashion” — and who benefits.
+          </p>
+          <div class="tagrow" aria-label="Cultural framing tags">
+            <span class="tag">Black influence as foundational</span>
+            <span class="tag">Power & access</span>
+            <span class="tag">Ethics & ownership</span>
+            <span class="tag">Identity & meaning</span>
+          </div>
+        </div>
+        <div>
+          <p style="margin:0; font-size:14px; color:rgba(255,255,255,.95);">
+            <strong>Class vibe:</strong> professional, respectful, and real. You are encouraged to question the textbook,
+            challenge ideas, and use evidence — not just opinions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WELCOME -->
+    <section class="section" aria-label="Welcome statement">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Welcome to the course</h2>
+          <p class="section-note">What to expect, how we learn, and why this course matters.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content">
+        <div class="grid">
+          <div class="box">
+            <div class="label">
+              <div class="icon" aria-hidden="true">
+                <!-- wave icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 12c3-6 6 6 9 0s6 6 9 0" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Welcome</h4>
+            </div>
+            <p>
+              Fashion marketing is more than selling clothes—it’s selling meaning, identity, culture, and aspiration.
+              This course builds your foundation with textbook concepts while using a Black cultural lens to analyze
+              how trends are created, branded, distributed, and monetized.
+            </p>
+          </div>
+
+          <div class="box">
+            <div class="label">
+              <div class="icon" aria-hidden="true">
+                <!-- compass icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3l7 7-7 11-7-11 7-7Z" stroke="var(--red)" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M12 7v4" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Purpose</h4>
+            </div>
+            <p>
+              You will leave this course more culturally competent and career-ready — able to analyze brands, evaluate
+              consumer behavior, and design strategies that are both effective and ethical.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICE HOURS -->
+    <section class="section" aria-label="Office hours">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Office hours</h2>
+          <p class="section-note">Come prepared with questions, drafts, or ideas. In-person & virtual options available.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="content hours">
+        <div class="box">
+          <div class="label">
+            <div class="icon" aria-hidden="true">
+              <!-- calendar icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M7 3v3M17 3v3" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 8h16" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 6h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="var(--black)" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4>Tuesdays</h4>
+          </div>
+          <ul class="times">
+            <li>10:00–11:00am</li>
+            <li>12:15–12:30pm</li>
+            <li>1:45–2:00pm</li>
+            <li>3:15–3:30pm</li>
+            <li>4:45–6:00pm</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <div class="label">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10M7 12h10M7 17h7" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="var(--red)" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4>Wednesdays</h4>
+          </div>
+          <ul class="times">
+            <li>12:00–4:00pm</li>
+          </ul>
+
+          <div class="label" style="margin-top:14px;">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 7v5l3 2" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="var(--red)" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4>Thursdays</h4>
+          </div>
+          <ul class="times">
+            <li>10:00–11:00am</li>
+            <li>12:15–12:30pm</li>
+            <li>1:45–2:00pm</li>
+            <li>3:15–3:30pm</li>
+            <li>4:45–5:00pm</li>
+          </ul>
+
+          <p class="muted"><strong>Office:</strong> Buckman Hall, Office 214A</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section class="section" aria-label="Course objectives">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Course objectives</h2>
+          <p class="section-note">What you will be able to do by the end of the semester.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content">
+        <ul class="checklist">
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Explain core fashion marketing concepts, theories, and frameworks using professional vocabulary.</span>
+          </li>
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Analyze fashion marketing through a cultural lens, including identity, power, access, and Black influence.</span>
+          </li>
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Evaluate fashion consumer behavior (perception, motivation, attitudes, reference groups, and social class).</span>
+          </li>
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Apply segmentation, targeting, and positioning strategies to fashion brands and markets.</span>
+          </li>
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Assess ethical, social responsibility, and sustainability issues within fashion production and marketing.</span>
+          </li>
+          <li class="check">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="var(--red)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Develop career-ready fashion marketing recommendations through applied analysis, projects, and presentations.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- COURSE MAP -->
+    <section class="section" aria-label="Course map">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Course map</h2>
+          <p class="section-note">Our weekly rhythm: learn the concept, interpret it culturally, discuss it, then apply it.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content map">
+
+        <div class="flow" role="list" aria-label="Text to culture to discussion to application steps">
+          <div class="step" role="listitem">
+            <h3>Text</h3>
+            <p>Textbook concepts & frameworks (definitions, models, marketing vocabulary).</p>
+            <div class="mini">
+              <span class="chip">key terms</span>
+              <span class="chip">theories</span>
+              <span class="chip">frameworks</span>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <h3>Culture</h3>
+            <p>Interpret through identity, power, access, representation, ethics, and ownership.</p>
+            <div class="mini">
+              <span class="chip">Black influence</span>
+              <span class="chip">meaning</span>
+              <span class="chip">equity</span>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <h3>Discussion</h3>
+            <p>Reflection prompts + infographics + respectful debate using real brand examples.</p>
+            <div class="mini">
+              <span class="chip">dialogue</span>
+              <span class="chip">visual aids</span>
+              <span class="chip">cases</span>
+            </div>
+          </div>
+
+          <div class="step" role="listitem">
+            <h3>Application</h3>
+            <p>Brand analysis, strategy assignments, and professional-quality pitches.</p>
+            <div class="mini">
+              <span class="chip">deliverables</span>
+              <span class="chip">presentations</span>
+              <span class="chip">career skills</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="box">
+            <div class="label">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 20V10" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8 14l4-4 4 4" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 21h16" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>What you’ll do weekly</h4>
+            </div>
+            <p>
+              Read (or skim strategically), complete a short reflection, come ready to talk, and produce applied work.
+              The goal is growth: stronger thinking, clearer writing, and better marketing decisions.
+            </p>
+          </div>
+
+          <div class="box">
+            <div class="label">
+              <div class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 11h10M7 15h10" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 7h6" stroke="var(--red)" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="var(--black)" stroke-width="2"/>
+                </svg>
+              </div>
+              <h4>How participation works</h4>
+            </div>
+            <p>
+              Participation is demonstrated through discussion, teamwork, and on-time deliverables.
+              Professional communication and respectful engagement are expected.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICIES -->
+    <section class="section" aria-label="Policies and procedures">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Policies & procedures</h2>
+          <p class="section-note">All official policies live in one place to keep this syllabus clean and digital-first.</p>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="content">
+        <div class="box">
+          <div class="label">
+            <div class="icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4Z" stroke="var(--black)" stroke-width="2"/>
+                <path d="M9 12l2 2 4-5" stroke="var(--red)" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h4>Read this carefully</h4>
+          </div>
+          <p>
+            The full course policies document includes expectations for attendance, tardiness, participation, late work,
+            academic integrity & AI use, classroom etiquette, dress code, technology needs, grading scale, deliverables,
+            submission rules, and accessibility policies.
+          </p>
+
+          <div class="btnrow">
+            <!-- Replace href with your hosted policies link -->
+            <a class="btn red" href="REPLACE_WITH_YOUR_POLICIES_LINK" target="_blank" rel="noopener">
+              View Course Policies & Procedures
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14 3h7v7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M21 3l-9 9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+
+            <a class="btn secondary" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
+              Back to top
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14" stroke="var(--black)" stroke-width="2" stroke-linecap="round"/>
+                <path d="M7 10l5-5 5 5" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <p class="muted">
+            <strong>Enrollment note:</strong> By remaining enrolled, you acknowledge you have read and agree to follow all course policies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer" aria-label="Closing note">
+      <p>
+        <strong>Welcome to MKT 315-01: Fashion Marketing (Spring 2026).</strong>
+        Come ready to think, discuss, and build real marketing skill — with culture and ethics at the center.
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>
