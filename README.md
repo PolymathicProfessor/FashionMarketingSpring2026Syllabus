@@ -1,0 +1,1 @@
+# FashionMarketingSpring2026Syllabus
